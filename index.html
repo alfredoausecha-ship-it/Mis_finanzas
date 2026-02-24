@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Finanzas Master Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="app-container">
+    <section id="ventana-home" class="ventana">
+        <div class="header-home">
+            <h2>Mi Resumen 👋</h2>
+            <p id="fecha-actual"></p>
+        </div>
+
+        <div class="alerta-pagos" id="alerta-pendientes"></div>
+
+        <div class="balance-card">
+            <span>Presupuesto Libre</span>
+            <h1 id="home-libre">$ 0.00</h1>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-box">
+                <h3 class="chart-titulo">Distribución</h3>
+                <canvas id="graficoTorta"></canvas>
+            </div>
+            <div class="chart-box">
+                <h3 class="chart-titulo">Ingresos vs Gastos</h3>
+                <canvas id="graficoBarras"></canvas>
+            </div>
+        </div>
+
+        <div class="mini-cards">
+            <div class="mini-card verde">Ingresos<br><b id="home-ingresos">$ 0</b></div>
+            <div class="mini-card rojo">Gastos<br><b id="home-fijos">$ 0</b></div>
+            <div class="mini-card azul">Ahorros<br><b id="home-ahorros">$ 0</b></div>
+        </div>
+    </section>
+
+    <section id="ventana-ingresos" class="ventana" style="display:none;">
+        <h2 class="titulo-verde">💰 Mis Ingresos</h2>
+        <div class="form-registro">
+            <input type="hidden" id="edit-ingreso-id">
+            <input type="text" id="ingreso-nombre" placeholder="Origen del dinero (Ej: Sueldo)">
+            <input type="number" id="ingreso-monto" placeholder="Monto $">
+            <button class="btn-guardar btn-verde" id="btn-submit-ingreso" onclick="guardarDato('ingreso')">Añadir Ingreso</button>
+            <button class="btn-cancelar" id="btn-cancelar-ingreso" style="display:none;" onclick="cancelarEdicion('ingreso')">Cancelar Edición</button>
+        </div>
+        <div id="lista-ingresos" class="lista-detalle"></div>
+    </section>
+
+    <section id="ventana-gastos" class="ventana" style="display:none;">
+        <h2 class="titulo-rojo">📉 Mis Gastos y Pagos</h2>
+        <div class="form-registro">
+            <input type="hidden" id="edit-gasto-id">
+            <input type="text" id="gasto-nombre" placeholder="Concepto (Ej: Luz, Internet)">
+            <input type="number" id="gasto-monto" placeholder="Monto $">
+            <div class="row">
+                <select id="gasto-tipo" onchange="toggleDiaVencimiento()">
+                    <option value="Variable">Gasto Variable</option>
+                    <option value="Fijo">Gasto Fijo (Mensual)</option>
+                </select>
+                <input type="number" id="gasto-dia" placeholder="Día (1-31)" style="display:none;">
+            </div>
+            <button class="btn-guardar btn-rojo" id="btn-submit-gasto" onclick="guardarDato('gasto')">Registrar Gasto</button>
+            <button class="btn-cancelar" id="btn-cancelar-gasto" style="display:none;" onclick="cancelarEdicion('gasto')">Cancelar Edición</button>
+        </div>
+        <div id="lista-gastos" class="lista-detalle"></div>
+    </section>
+
+    <section id="ventana-ahorros" class="ventana" style="display:none;">
+        <h2 class="titulo-azul">🏦 Mis Ahorros</h2>
+        <div class="form-registro">
+            <input type="hidden" id="edit-ahorro-id">
+            <input type="text" id="ahorro-nombre" placeholder="Meta (Ej: Viaje)">
+            <input type="number" id="ahorro-monto" placeholder="Cantidad $">
+            <button class="btn-guardar btn-azul" id="btn-submit-ahorro" onclick="guardarDato('ahorro')">Apartar Ahorro</button>
+            <button class="btn-cancelar" id="btn-cancelar-ahorro" style="display:none;" onclick="cancelarEdicion('ahorro')">Cancelar Edición</button>
+        </div>
+        <div id="lista-ahorros" class="lista-detalle"></div>
+    </section>
+
+    <nav class="tab-bar">
+        <button onclick="mostrarVentana('home')" class="tab-btn">🏠<br>Home</button>
+        <button onclick="mostrarVentana('ingresos')" class="tab-btn">💰<br>Ingresos</button>
+        <button onclick="mostrarVentana('gastos')" class="tab-btn">📉<br>Gastos</button>
+        <button onclick="mostrarVentana('ahorros')" class="tab-btn">🏦<br>Ahorros</button>
+    </nav>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

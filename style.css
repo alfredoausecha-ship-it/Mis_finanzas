@@ -1,0 +1,72 @@
+:root {
+    --azul: #1A237E;
+    --verde: #4CAF50;
+    --rojo: #F44336;
+    --amarillo: #FFC107;
+    --fondo: #f0f2f5;
+    --blanco: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--fondo); margin: 0; padding-bottom: 80px; }
+
+.app-container { width: 100%; max-width: 500px; margin: auto; padding: 15px; background: var(--blanco); min-height: 100vh; position: relative; overflow-x: hidden; }
+
+/* Títulos de colores */
+.titulo-verde { color: var(--verde); }
+.titulo-rojo { color: var(--rojo); }
+.titulo-azul { color: var(--azul); }
+
+/* Navegación */
+.tab-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 500px; background: var(--azul); display: flex; justify-content: space-around; padding: 10px 0; border-radius: 20px 20px 0 0; z-index: 1000; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+.tab-btn { background: none; border: none; color: var(--blanco); cursor: pointer; font-size: 0.75rem; width: 25%; }
+
+/* Tarjetas y Resumen */
+.balance-card { background: var(--azul); color: var(--blanco); padding: 20px; border-radius: 15px; text-align: center; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+.balance-card h1 { margin: 10px 0 0 0; font-size: 2.2rem; }
+
+/* Contenedor Responsivo de Gráficos (AHORA EN COLUMNA) */
+.charts-container { display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; width: 100%; }
+.chart-box { background: #fafafa; border-radius: 12px; padding: 15px; height: 180px; position: relative; border: 1px solid #eee; width: 100%; display: flex; flex-direction: column; }
+.chart-titulo { font-size: 0.8rem; color: #666; margin: 0 0 10px 0; text-align: center; font-weight: normal; }
+canvas { flex: 1; width: 100% !important; height: 100% !important; }
+
+.mini-cards { display: flex; gap: 10px; margin-bottom: 20px; }
+.mini-card { flex: 1; padding: 10px; border-radius: 10px; font-size: 0.75rem; text-align: center; color: var(--blanco); font-weight: bold; }
+.mini-card.verde { background: var(--verde); }
+.mini-card.rojo { background: var(--rojo); }
+.mini-card.azul { background: var(--azul); }
+
+/* Alertas del Calendario */
+.alerta-pagos { margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px; }
+.alerta-item { padding: 12px; border-radius: 8px; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; font-weight: bold; }
+.alerta-roja { background: #ffebee; border-left: 5px solid var(--rojo); color: #c62828; }
+.alerta-amarilla { background: #fff8e1; border-left: 5px solid var(--amarillo); color: #f57f17; }
+.btn-pagar-alerta { background: var(--verde); color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+
+/* Formularios */
+.form-registro { display: flex; flex-direction: column; gap: 10px; background: #f8f9fa; padding: 15px; border-radius: 12px; margin-bottom: 15px; }
+.row { display: flex; gap: 10px; width: 100%; }
+input, select { padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 100%; font-size: 0.9rem; }
+.btn-guardar { color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 1rem; cursor: pointer; }
+.btn-cancelar { background: transparent; border: 1px solid #999; color: #555; padding: 10px; border-radius: 8px; cursor: pointer; }
+
+.btn-verde { background: var(--verde); }
+.btn-rojo { background: var(--rojo); }
+.btn-azul { background: var(--azul); }
+
+/* Listas */
+.lista-detalle { display: flex; flex-direction: column; gap: 8px; }
+.item-dato { background: var(--blanco); border: 1px solid #eee; border-radius: 10px; padding: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.item-info { width: 60%; }
+.item-acciones { width: 40%; text-align: right; }
+
+.pagado { opacity: 0.5; background: #fafafa; }
+.pagado .item-info { text-decoration: line-through; }
+.badge { font-size: 0.65rem; padding: 3px 6px; border-radius: 4px; color: white; margin-left: 5px; }
+.badge.pendiente { background: var(--amarillo); color: #333; }
+.badge.ok { background: var(--verde); }
+
+/* Botones de acción (Editar/Eliminar/Pagar) */
+.btn-icon { background: none; border: none; font-size: 1.2rem; cursor: pointer; padding: 0 5px; }
